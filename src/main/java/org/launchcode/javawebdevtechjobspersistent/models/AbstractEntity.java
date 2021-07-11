@@ -7,13 +7,14 @@ import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
-@MappedSuperclass
+@MappedSuperclass // Part 2, task 1
 public abstract class AbstractEntity {
+    // AUTO generates unique ID for new Employer, Job, and Skills objects Part 2, task 2
     @Id
     @GeneratedValue
     private int id;
 
-    @NotBlank
+    // Requires a name for each object Employer, Job, and Skills - 3-60 characters. Part 2, task 3
     @Size(min = 3, max = 60, message = "Name must be between 3 and 60 characters.")
     private String name;
 

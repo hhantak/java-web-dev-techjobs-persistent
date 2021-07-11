@@ -15,11 +15,12 @@ import java.util.Optional;
 @RequestMapping("employers")
 public class EmployerController {
 
+    // Part 2, Controllers task 1
     @Autowired
     private EmployerRepository employerRepository;
 
-    // Controllers 2. Add index method/display all
-    @GetMapping("employers")
+    // Part 2, Controllers task 2
+    @GetMapping
     public String displayAllEmployers(Model model) {
         model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll());
@@ -33,11 +34,13 @@ public class EmployerController {
         return "employers/add";
     }
 
+    // Part 2, Controllers task 3 - Saves new Employer objects to the employerRepository
     @PostMapping("add")
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
 
@@ -45,6 +48,7 @@ public class EmployerController {
         return "redirect:";
     }
 
+    // Part 2, Controllers task 4 - this task I am having trouble with syntax to display view.
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 

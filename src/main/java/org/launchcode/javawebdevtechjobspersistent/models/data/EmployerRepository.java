@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-
+//Part 2, Data Layer task 1
 @Repository
 public interface EmployerRepository extends CrudRepository<Employer, Integer> {
 

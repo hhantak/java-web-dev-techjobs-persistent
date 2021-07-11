@@ -7,9 +7,11 @@ import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
+//Part 2, Models task 2 Entity class for Employer.
 @Entity
 public class Employer extends AbstractEntity {
-    //added location with validation stating it is a required field.
+
+    //Part 2, Models task 1 Required Location field - appropriate getters/setters below
     @NotBlank(message = "Location is required")
     private String location;
 
@@ -17,7 +19,7 @@ public class Employer extends AbstractEntity {
     @JoinColumn
     private List<Job> jobs = new ArrayList<>();
 
-    // no-arg constructor
+    // no-arg constructor Part 2, Models task 2
     public Employer() {}
 
     // getter and setter for location

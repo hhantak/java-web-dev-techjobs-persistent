@@ -11,6 +11,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,7 +22,7 @@ public class SkillController {
     private SkillsRepository skillsRepository;
 
     // Controllers 2. Add index method/display all
-    @GetMapping("skills")
+    @GetMapping("")
     public String displayAllSkills(Model model) {
         model.addAttribute("title", "All Skills");
         model.addAttribute("skills", skillsRepository.findAll());
@@ -40,6 +41,7 @@ public class SkillController {
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Skill");
             return "skills/add";
         }
         skillsRepository.save(newSkill);
@@ -52,7 +54,7 @@ public class SkillController {
         Optional optionalSkill = skillsRepository.findById(skillId);
         if (optionalSkill.isPresent()) {
             Skill skill  = (Skill) optionalSkill.get();
-            model.addAttribute("skill", skillId);
+            model.addAttribute("skill", skill);
             return "skills/view";
         } else {
             return "redirect:../";
